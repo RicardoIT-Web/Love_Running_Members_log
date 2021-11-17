@@ -12,8 +12,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("love_running_members_log")
 
-millie = SHEET.worksheet("Millie")
 
-data = millie.get_all_values()
+def get_distance_run_data():
+    """
+    Recieve daily kms run from members.
+    """
+    print("Please provide the distance of your last run. ")
+    print("You should provide this data in numerical form. ")
+    print("Example: 3.2 = 3.2kms run. ")
+    print("If you have not had a run today, please type 0.\n ")
 
-print(data)
+    distance_str = input("Enter your kms here: ")
+    print(f"The distance provided is {distance_str}kms")
+
+
+get_distance_run_data()
