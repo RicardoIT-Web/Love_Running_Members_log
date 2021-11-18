@@ -13,14 +13,27 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("love_running_members_log")
 
 
+fname, lname = input("Please enter your fisrt and last name: ").split()
+if fname == (""):
+    print("You have not entered a first name")
+    
+
+def welcome_message():
+    print(f"Welcome {fname}!\n")
+
+
+def user_instructions():
+
+    print("Please provide the distance of your runs. ")
+    print("You should provide this data in numerical form. ")
+    print("Example: 3.2 = 3.2kms run, 5 = 5kms run\n")
+    print("If you have not had a run on a particular day, please type 0.\n ")
+
+
 def get_distance_run_data():
     """
     Recieve daily kms run from members.
     """
-    print("Please provide the distance of your runs. ")
-    print("You should provide this data in numerical form. ")
-    print("Example: 3.2 = 3.2kms ran, 5 = 5kms ran\n")
-    print("If you have not had a run today, please type 0.\n ")
 
     dist_str_mon = input("Enter Monday's distance here: ")
     print(f"The distance provided for Monday's run is {dist_str_mon}kms\n")
@@ -47,19 +60,23 @@ def get_distance_run_data():
     validate_data(distance_data)
 
 
-def validate_data(values):
+def validate_data(input):
     """
     Try
     """
     try:
-        if len(values) != "7":
+        if len(input) != 7:
             raise ValueError(
-                f"7 values required, you only provided {len(values)}"
+                f"7 values required, you only provided {len(input)}"
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
 
-    print(values)
+    print(input)
 
 
+welcome_message()
+user_instructions()
 get_distance_run_data()
+
+
