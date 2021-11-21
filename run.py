@@ -14,18 +14,28 @@ SHEET = GSPREAD_CLIENT.open("love_running_members_log")
 
 
 def fname_input(prompt):
+    """
+    Function to promt user to input first name
+    """
     return input(prompt)
 
 
 def lname_input(prompt):
+    """
+    Function to promt user to input last name
+    """
     return input(prompt)
 
 
-fname = fname_input("Input your first name: ")
-lname = lname_input("Input your last name: ")
+fname = fname_input("Hello Member!\nPlease type your first name: \n")
+lname = lname_input("Please type your last name: \n")
 
 
 def welcome_message():
+    """
+    Function to welcome user which will include users first name called from
+    fname_input function
+    """
     print(f"Welcome {fname}!\n")
 
 
@@ -34,82 +44,78 @@ welcome_message()
 
 def user_instructions():
 
-    print("Please provide the distance of your runs. ")
+    print("Please provide the distance of your daily runs. ")
     print("You should provide this data in numerical form. ")
-    print("Example: 3.2 = 3.2kms run, 5 = 5kms run\n")
+    print("Example: 3.2 = 3.2km run, 5 = 5km run\n")
     print("If you did not run on a particular day, please type 0.\n ")
 
 
 user_instructions()
 
 
-weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}
+weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
 for weekday in weekdays:
     if weekday == "Monday":
         pass
-    input("How many kms did you run on Monday? ")
+    mon_answer = input("How many kms did you run on Monday? ")
+    if mon_answer <= "-1":
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        continue
     if weekday == "Tuesday":
         pass
-    input("How many kms did you run on Tuesday? ")
+    tue_answer = input("How many kms did you run on Tuesday? ")
+    if tue_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
     if weekday == "Wednesday":
         pass
-    input("How many kms did you run on Wednesday? ")
+    wed_answer = input("How many kms did you run on Wednesday? ")
+    if wed_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
     if weekday == "Thursday":
         pass
-    input("How many kms did you run on Thursday? ")
+    thu_answer = input("How many kms did you run on Thursday? ")
+    if thu_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
     if weekday == "Friday":
         pass
-    input("How many kms did you run on Friday? ")
+    fri_answer = input("How many kms did you run on Friday? ")
+    if fri_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
     if weekday == "Saturday":
         pass
-    input("How many kms did you run on Saturday? ")
+    sat_answer = input("How many kms did you run on Saturday? ")
+    if sat_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
     if weekday == "Sunday":
-        input("How many kms did you run on Sunday? ")
+        pass
+    sun_answer = input("How many kms did you run on Sunday? ")
+    if sun_answer <= "-1":
+        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        continue
+    break
 
-    exit()
-# def get_distance_run_data():
+user_answers = mon_answer, tue_answer, wed_answer, thu_answer, fri_answer, sat_answer, sun_answer
+print(f"Your daily distances for this week are {user_answers}")
+
+# def validate_data(values):
 #     """
-#     Recieve daily kms run from members.
-#     """
-
-#     dist_str_mon = input("Enter Monday's distance here: ")
-#     print(f"The distance provided for Monday's run is {dist_str_mon}kms\n")
-
-#     dist_str_tues = input("Enter Tuesday's distance here: ")
-#     print(f"The distance provided for Tuesday's run is {dist_str_tues}kms\n")
-
-#     dist_str_wed = input("Enter Wednesday's distance here: ")
-#     print(f"The distance provided for Wednesday's run is {dist_str_wed}kms\n")
-
-#     dist_str_thur = input("Enter Thursday's distance here: ")
-#     print(f"The distance provided for Thursday's run is {dist_str_thur}kms\n")
-
-#     dist_str_fri = input("Enter Friday's distance here: ")
-#     print(f"The distance provided for Friday's run is {dist_str_fri}kms\n")
-
-#     dist_str_sat = input("Enter Saturday's distance here: ")
-#     print(f"The distance provided for Saturday's run is {dist_str_sat}kms\n")
-
-#     dist_str_sun = input("Enter Sunday's distance here: ")
-#     print(f"The distance provided for Sunday's run is {dist_str_sun}kms\n")
-
-#     distance_data = dist_str_mon.split(","), dist_str_tues.split(","), dist_str_wed.split(","), dist_str_thur.split(","), dist_str_fri.split(","), dist_str_sat.split(","), dist_str_sun.split(",")
-#     validate_data(distance_data)
-
-
-# def validate_data(input):
-#     """
-#     Try
+#     Function for validating User input data
 #     """
 #     try:
-#         if len(input) != 7:
+#         if values >= -1:
 #             raise ValueError(
-#                 f"7 values required, you only provided {len(input)}"
+#                 f"7 values required, you only provided {(values)}"
 #             )
 #     except ValueError as e:
 #         print(f"Invalid data: {e}, please try again.\n")
 
-#     print(input)
+#     return values
 
 
-# get_distance_run_data()
+# validate_data(input)
