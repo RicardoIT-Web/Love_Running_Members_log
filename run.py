@@ -63,67 +63,60 @@ weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 
 for weekday in weekdays:
     if weekday == "Monday":
-        pass
-    mon_answer = input("How many kms did you run on Monday? ")
-    if mon_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        mon_answer = input("How many kms did you run on Monday? ")
+        while not mon_answer.isnumeric():
+            mon_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Tuesday":
-        pass
-    tue_answer = input("How many kms did you run on Tuesday? ")
-    if tue_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        tue_answer = input("How many kms did you run on Tuesday? ")
+        while not tue_answer.isnumeric():
+            tue_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Wednesday":
-        pass
-    wed_answer = input("How many kms did you run on Wednesday? ")
-    if wed_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        wed_answer = input("How many kms did you run on Wednesday? ")
+        while not wed_answer.isnumeric():
+            wed_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Thursday":
-        pass
-    thu_answer = input("How many kms did you run on Thursday? ")
-    if thu_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        thu_answer = input("How many kms did you run on Thursday? ")
+        while not thu_answer.isnumeric():
+            thu_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Friday":
-        pass
-    fri_answer = input("How many kms did you run on Friday? ")
-    if fri_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        fri_answer = input("How many kms did you run on Friday? ")
+        while not fri_answer.isnumeric():
+            fri_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Saturday":
-        pass
-    sat_answer = input("How many kms did you run on Saturday? ")
-    if sat_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        sat_answer = input("How many kms did you run on Saturday? ")
+        while not sat_answer.isnumeric():
+            sat_answer = input("Error: please enter a number ")
         continue
+
     if weekday == "Sunday":
-        pass
-    sun_answer = input("How many kms did you run on Sunday? ")
-    if sun_answer <= "-1":
-        print("Invalid entry. If you've not had a run on this day, please type 0.")
+        sun_answer = input("How many kms did you run on Sunday? ")
+        while not sun_answer.isnumeric():
+            sun_answer = input("Error: please enter a number ")
         continue
     break
 
 
 user_answers = mon_answer, tue_answer, wed_answer, thu_answer, fri_answer, sat_answer, sun_answer
-print(f"Your daily distances for this week are {user_answers}")
 
 
-# def validate_data(user_answers):
-#     """
-#     Function for validating User output data
-#     """
-#     try:
-#         if user_answers = :
-#         raise ValueError(
-#                 f"7 values required, you only provided {len(user_answers)}"
-#             )
-#     except ValueError as e:
-#         print(f"Invalid data: {e}, please try again.\n")
+# calc_bmi = input('Would you like to monitor your BMI? (y/n): \n')
 
-#     return user_answers
+# if calc_bmi == "y":
+#     bmi_weight = input("Please provide your current weight in kg: ")
+#     if bmi_weight <= "0":
+#         print("Invalid Entry, Please try again")
+# else:
+#     pass
 
-
+# if bmi_height = input("Please provide your height in cm: ")
 # validate_data(user_answers)
