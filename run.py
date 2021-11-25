@@ -1,3 +1,6 @@
+"""
+Link to google spreadsheet.
+"""
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -43,6 +46,9 @@ welcome_message()
 
 
 def user_instructions():
+    """
+    Provide user with guidance of input responses
+    """
 
     print("Please provide the distance of your daily runs. ")
     print("You should provide this data in numerical form. ")
@@ -66,56 +72,58 @@ for weekday in weekdays:
         pass
     tue_answer = input("How many kms did you run on Tuesday? ")
     if tue_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     if weekday == "Wednesday":
         pass
     wed_answer = input("How many kms did you run on Wednesday? ")
     if wed_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     if weekday == "Thursday":
         pass
     thu_answer = input("How many kms did you run on Thursday? ")
     if thu_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     if weekday == "Friday":
         pass
     fri_answer = input("How many kms did you run on Friday? ")
     if fri_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     if weekday == "Saturday":
         pass
     sat_answer = input("How many kms did you run on Saturday? ")
     if sat_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     if weekday == "Sunday":
         pass
     sun_answer = input("How many kms did you run on Sunday? ")
     if sun_answer <= "-1":
-        print("Invalid entry. If you have not had a run on this day, please type 0.")
+        print("Invalid entry. If you've not had a run on this day, please type 0.")
         continue
     break
+
 
 user_answers = mon_answer, tue_answer, wed_answer, thu_answer, fri_answer, sat_answer, sun_answer
 print(f"Your daily distances for this week are {user_answers}")
 
-# def validate_data(values):
+
+# def validate_data(user_answers):
 #     """
-#     Function for validating User input data
+#     Function for validating User output data
 #     """
 #     try:
-#         if values >= -1:
-#             raise ValueError(
-#                 f"7 values required, you only provided {(values)}"
+#         if user_answers = :
+#         raise ValueError(
+#                 f"7 values required, you only provided {len(user_answers)}"
 #             )
 #     except ValueError as e:
 #         print(f"Invalid data: {e}, please try again.\n")
 
-#     return values
+#     return user_answers
 
 
-# validate_data(input)
+# validate_data(user_answers)
