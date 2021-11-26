@@ -1,8 +1,7 @@
-"""
-Link to google spreadsheet.
-"""
 import gspread
 from google.oauth2.service_account import Credentials
+# from pprint import pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -31,7 +30,12 @@ def lname_input(prompt):
 
 
 fname = fname_input("Hello Member!\nPlease type your first name: \n")
+while not fname.isalpha():
+    fname = input("Error: please enter a First Name ")
+
 lname = lname_input("Please type your last name: \n")
+while not lname.isalpha():
+    fname = input("Error: please enter a last Name ")
 
 
 def welcome_message():
@@ -43,6 +47,14 @@ def welcome_message():
 
 
 welcome_message()
+
+
+# target_run = target_data_input("would you like to provide a weekly target? y/n: ")
+# while target_run ==  "y":
+#     print("Please provide your weekly target: ")
+# else:
+#     target_run == "n"
+#     print("OK, lets move on...")
 
 
 def user_instructions():
@@ -106,17 +118,26 @@ for weekday in weekdays:
     break
 
 
-user_answers = mon_answer, tue_answer, wed_answer, thu_answer, fri_answer, sat_answer, sun_answer
+user_answers = [int(mon_answer), int(tue_answer), int(wed_answer), int(thu_answer), int(fri_answer), int(sat_answer), int(sun_answer)]
+print(f"you have entered: {user_answers}")
 
 
-# calc_bmi = input('Would you like to monitor your BMI? (y/n): \n')
+def update_members_log(user_output):
+    """
+    Updating members log to the worksheet.
+    Adding a new row with the list data provided
+    """
+    print("updating members log...\n")
+    members_log_worksheet = SHEET.worksheet(fname)
+    members_log_worksheet.update('A2:G2', user_output)
+    print("Members log updated.\n")
 
-# if calc_bmi == "y":
-#     bmi_weight = input("Please provide your current weight in kg: ")
-#     if bmi_weight <= "0":
-#         print("Invalid Entry, Please try again")
-# else:
-#     pass
 
-# if bmi_height = input("Please provide your height in cm: ")
-# validate_data(user_answers)
+def main():
+    """
+    Run all program functions
+    """
+    update_members_log(user_answers)
+
+
+main()
