@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-# from pprint import pprint
 
 
 SCOPE = [
@@ -70,74 +69,93 @@ def user_instructions():
 
 user_instructions()
 
-
-weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
-for weekday in weekdays:
-    if weekday == "Monday":
-        mon_answer = input("How many kms did you run on Monday? ")
-        while not mon_answer.isnumeric():
-            mon_answer = input("Error: please enter a number ")
+days = 0
+week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+while days < 7:
+    mon_answer = input("How many Km did you run on " + week[days] + ": ")
+    if mon_answer.isdigit():
+        print("For " + week[days] + " You have entered: " + (mon_answer))
+    elif user_answer.isalpha(): 
+        print("Invalid entry. Please type a number")
         continue
-
-    if weekday == "Tuesday":
-        tue_answer = input("How many kms did you run on Tuesday? ")
-        while not tue_answer.isnumeric():
-            tue_answer = input("Error: please enter a number ")
-        continue
-
-    if weekday == "Wednesday":
-        wed_answer = input("How many kms did you run on Wednesday? ")
-        while not wed_answer.isnumeric():
-            wed_answer = input("Error: please enter a number ")
-        continue
-
-    if weekday == "Thursday":
-        thu_answer = input("How many kms did you run on Thursday? ")
-        while not thu_answer.isnumeric():
-            thu_answer = input("Error: please enter a number ")
-        continue
-
-    if weekday == "Friday":
-        fri_answer = input("How many kms did you run on Friday? ")
-        while not fri_answer.isnumeric():
-            fri_answer = input("Error: please enter a number ")
-        continue
-
-    if weekday == "Saturday":
-        sat_answer = input("How many kms did you run on Saturday? ")
-        while not sat_answer.isnumeric():
-            sat_answer = input("Error: please enter a number ")
-        continue
-
-    if weekday == "Sunday":
-        sun_answer = input("How many kms did you run on Sunday? ")
-        while not sun_answer.isnumeric():
-            sun_answer = input("Error: please enter a number ")
-        continue
+    days += 1
+    tue_answer = input("How many Km did you run on " + week[days] + ": ")
+    if tue_answer.isdigit():
+        print("For " + week[days] + " You have entered: " + (tue_answer))
+    elif tue_answer.isalpha(): 
+        print("Invalid entry. Please type a number")
+    days += 1
     break
+print(int[mon_answer, tue_answer])
 
 
-user_answers = [int(mon_answer), int(tue_answer), int(wed_answer), int(thu_answer), int(fri_answer), int(sat_answer), int(sun_answer)]
-print(f"you have entered: {user_answers}")
+# for weekday in weekdays:
+#     if weekday == "Monday":
+#         mon_answer = input("How many kms did you run on Monday? ")
+#         while not mon_answer.isnumeric():
+#             mon_answer = input("Error: please enter a number ")
+#         continue
+
+#     if weekday == "Tuesday":
+#         tue_answer = input("How many kms did you run on Tuesday? ")
+#         while not tue_answer.isnumeric():
+#             tue_answer = input("Error: please enter a number ")
+#             if tue_answer.isdigit():
+#                 tue_answer = int(tue_answer)
+#         continue
+
+#     if weekday == "Wednesday":
+#         wed_answer = input("How many kms did you run on Wednesday? ")
+#         while not wed_answer.isnumeric():
+#             wed_answer = input("Error: please enter a number ")
+#         continue
+
+#     if weekday == "Thursday":
+#         thu_answer = input("How many kms did you run on Thursday? ")
+#         while not thu_answer.isnumeric():
+#             thu_answer = input("Error: please enter a number ")
+#         continue
+
+#     if weekday == "Friday":
+#         fri_answer = input("How many kms did you run on Friday? ")
+#         while not fri_answer.isnumeric():
+#             fri_answer = input("Error: please enter a number ")
+#         continue
+
+#     if weekday == "Saturday":
+#         sat_answer = input("How many kms did you run on Saturday? ")
+#         while not sat_answer.isnumeric():
+#             sat_answer = input("Error: please enter a number ")
+#         continue
+
+#     if weekday == "Sunday":
+#         sun_answer = input("How many kms did you run on Sunday? ")
+#         while not sun_answer.isnumeric():
+#             sun_answer = input("Error: please enter a number ")
+#         continue
+#     break
 
 
-def update_members_log(user_output):
-    """
-    Updating members log to the worksheet.
-    Adding a new row with the list data provided
-    """
-    print("updating members log...\n")
-    members_log_worksheet = SHEET.worksheet(fname)
-    members_log_worksheet.update('A2:G2', user_output)
-    print("Members log updated.\n")
+# user_answers = [mon_answer, tue_answer, wed_answer, thu_answer, fri_answer, sat_answer, sun_answer]
+# print(f"you have entered: {user_answers}")
 
 
-def main():
-    """
-    Run all program functions
-    """
-    update_members_log(user_answers)
+# def update_members_log(user_answers):
+#     """
+#     Updating members log to the worksheet.
+#     Adding a new row with the list data provided
+#     """
+#     print("updating members log...\n")
+#     members_log_worksheet = SHEET.worksheet(fname)
+#     members_log_worksheet.append_row(user_answers)
+#     print("Members log updated.\n")
 
 
-main()
+# def main():
+#     """
+#     Run all program functions
+#     """
+#     update_members_log(user_answers)
+
+
+# main()
