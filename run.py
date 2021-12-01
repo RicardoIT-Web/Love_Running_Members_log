@@ -14,11 +14,26 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("love_running_members_log")
 
 
+def welcome_members_message():
+    """
+    A welcome message to the member
+    """
+    print("Welcome to the Love Running Members Log\n")
+
+
+welcome_members_message()
+
+
 def fname_input(prompt):
     """
     Function to promt user to input first name
     """
     return input(prompt)
+
+
+fname = fname_input("Hello Member!\nPlease type your first name: \n")
+while not fname.isalpha():
+    fname = input("Error: please enter a First Name ")
 
 
 def lname_input(prompt):
@@ -27,10 +42,6 @@ def lname_input(prompt):
     """
     return input(prompt)
 
-
-fname = fname_input("Hello Member!\nPlease type your first name: \n")
-while not fname.isalpha():
-    fname = input("Error: please enter a First Name ")
 
 lname = lname_input("Please type your last name: \n")
 while not lname.isalpha():
@@ -45,26 +56,26 @@ existing_user_fnames = WORKSHEET.col_values(1)
 existing_user_lnames = WORKSHEET.col_values(2)
 
 
-if fname and lname not in existing_user_fnames:
+if fname not in existing_user_fnames:
     WORKSHEET = SHEET.worksheet("members_details")
     WORKSHEET.append_row([fname] + [lname])
+
 if (fname) not in existing_user_fnames:
-    if (lname) not in existing_user_lnames:
-        SHEET.add_worksheet(fname, 53, 20)
-        USER_WORKSHEET = SHEET.worksheet(fname)
-        USER_WORKSHEET.update(
-            "A1:H1",
-            [
-                ["Monday"],
-                ["Tuesday"],
-                ["Wednesday"],
-                ["Thursday"],
-                ["Friday"],
-                ["Saturday"],
-                ["Sunday"],
-                ["Weekly_Target"]
-            ],
-            major_dimension="COLUMNS")
+    SHEET.add_worksheet(fname, 53, 20)
+    USER_WORKSHEET = SHEET.worksheet(fname)
+    USER_WORKSHEET.update(
+        "A1:I1",
+        [
+            ["Monday"],
+            ["Tuesday"],
+            ["Wednesday"],
+            ["Thursday"],
+            ["Friday"],
+            ["Saturday"],
+            ["Sunday"],
+            ["Weekly_Target"]
+        ],
+        major_dimension="COLUMNS")
 
 
 def welcome_message():
@@ -82,7 +93,7 @@ weekly_target = input("Would you like to provide a weekly target? y/n: \n")
 if weekly_target == "n":
     print(f"OK {fname} Let's move on...\n")
 elif weekly_target == "y":
-    weekly_target_data = input("How many KMs do you plan to run per week?\n")
+    weekly_target = input("How many KMs do you plan to run per week?\n")
 
 
 def user_instructions():
@@ -92,34 +103,38 @@ def user_instructions():
 
     print("Please provide the distance of your daily runs. ")
     print("You should provide this data in numerical form. ")
-    print("Example: 3.2 = 3.2km run, 5 = 5km run\n")
+    print("Example: 3.2 = 3.2km run, 5.0 = 5km run\n")
     print("If you did not run on a particular day, please type 0.\n ")
 
 
 user_answers = []
 weekdays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
-]
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
 for weekday in weekdays:
     answer = input(f"How many kms did you run on {weekday}? ")
-    while not answer.isnumeric():
-        answer = input("Error: please enter a number ")
-    user_answers.append(answer)
+    while True:
+        try:
+            float(answer)
+            break
+        except TypeError as e:
+            print(f"{e}: {answer} is not a number!")
+            test = input("Try another input:\n")
+    user_answers.append(float(answer))
 
-print(f"you have entered: {user_answers}")
+print(f"you have entered: {user_answers}\n")
+
+sums = user_answers
+print(f"Your total distance this week is: {sum(sums)}kms")
 
 
-# my_sum = int([user_answers])
-# print(my_sum)
-
-
-def update_members_log(weekday_answers, weekly_target):
+def update_members_log(weekday_answers, weekly_target_data):
     """
     Updating members log to the worksheet.
     Adding a new row with the list data provided
@@ -127,7 +142,7 @@ def update_members_log(weekday_answers, weekly_target):
     print("updating members log...\n")
     members_log_worksheet = SHEET.worksheet(fname)
     members_log_worksheet.append_row(weekday_answers)
-    members_log_worksheet.update_acell("H2", weekly_target)
+    members_log_worksheet.update_acell("H2", weekly_target_data)
     print("Members log updated.\n")
 
 
