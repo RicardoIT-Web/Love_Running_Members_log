@@ -78,11 +78,11 @@ def welcome_message():
 welcome_message()
 
 
-answer = input("Would you like to provide a weekly target? y/n: \n")
-if answer == "n":
+weekly_target = input("Would you like to provide a weekly target? y/n: \n")
+if weekly_target == "n":
     print(f"OK {fname} Let's move on...\n")
-elif answer == "y":
-    weekly_target = input("How many KMs do you plan to run per week?\n")
+elif weekly_target == "y":
+    weekly_target_data = input("How many KMs do you plan to run per week?\n")
 
 
 def user_instructions():
@@ -94,6 +94,7 @@ def user_instructions():
     print("You should provide this data in numerical form. ")
     print("Example: 3.2 = 3.2km run, 5 = 5km run\n")
     print("If you did not run on a particular day, please type 0.\n ")
+
 
 user_answers = []
 weekdays = [
@@ -112,17 +113,20 @@ for weekday in weekdays:
     user_answers.append(answer)
 
 print(f"you have entered: {user_answers}")
-# print(f"your total distance run this week is:" (mon_answer) + (tue_answer) + (wed_answer) + (thu_answer) + (fri_answer) + (sat_answer) + (sun_answer))
 
 
-def update_members_log(test, weekly_target):
+# my_sum = int([user_answers])
+# print(my_sum)
+
+
+def update_members_log(weekday_answers, weekly_target):
     """
     Updating members log to the worksheet.
     Adding a new row with the list data provided
     """
     print("updating members log...\n")
     members_log_worksheet = SHEET.worksheet(fname)
-    members_log_worksheet.append_row(test)
+    members_log_worksheet.append_row(weekday_answers)
     members_log_worksheet.update_acell("H2", weekly_target)
     print("Members log updated.\n")
 
