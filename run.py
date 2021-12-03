@@ -127,8 +127,7 @@ for weekday in weekdays:
             float(answer)
             break
         except TypeError as e:
-            print(f"{e}: {answer} is not a number!")
-            test = input("Try another input:\n")
+            answer = input(f"{e}: {answer} is not a number! Try Again")
     user_answers.append(float(answer))
 
 print(f"you have entered: {user_answers}\n")
@@ -155,11 +154,11 @@ update_distance_log(user_answers)
 # prompt user is they'd like to provide a weekly distance target
 
 weekly_target = input("Would you like to provide a weekly target? y/n: \n")
-if weekly_target == "n":
+if weekly_target == 'n':
     print(f"OK {fname} Let's move on...\n")
 elif weekly_target == "y":
     last_target = SHEET.worksheet(fname).acell("H2").value
-    # target_row = last_target[-1]
+    target_row = last_target[-1]
     print("Your last Target was: \n")
     print(f"{last_target} km")
     weekly_target = input("How many KMs do you plan to run per week?\n")
@@ -179,7 +178,7 @@ elif bmi_data == "y":
     print("Please select option below: \n")
 
     bmi_info = input(
-        "Want to know more about BMI & how it's calculated? y/n\n")
+        "Want to know more about BMI & how it's calculated? y/n \n")
     if bmi_info == "n":
         print(f"OK {fname} Let's move on...\n")
 
