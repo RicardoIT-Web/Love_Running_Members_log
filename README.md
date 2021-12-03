@@ -6,8 +6,20 @@ The objective of this project is to build a command-line application that allows
 
 ![Love Running Site](views/docs/images/loverunningsite.jpg)
 
-For this project I have decided to create an application that allows registered members of the Love Running Website to log their runs througout the week.
+This project is an application that allows Users of the Love Running Website to log their runs througout the week.
 
-Registered members will also have the choice of being able to track and monitor their progress on a weekly basis by choosing to provide total weekly targets to run.
+Users will also have the choice of being able to track and monitor their progress on a weekly basis by choosing to provide total weekly targets to run.
 
-At the same time, the implication will include a feature for members to monitor their Body Mass Index (BMI).    
+The aplication will also include a feature which calculates Users' Body Mass Index (BMI) together with a link to a National Health Site where they will be able to find out more about BMI in more detail.
+
+![Am I Responsive Design](views/docs/images/amiresponsive.jpg)
+
+## Table of Contents
+* [Features](Features)
+* [Future Features](Future-Features)
+* [Data Model](Data-Model)
+* [Flow Charts](Flow-Charts)
+* [Testing](Testing)
+* [Bugs](Bugs)
+* [Deployment](Deployment)
+* [Credits](Credits)
