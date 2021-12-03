@@ -158,8 +158,7 @@ if weekly_target == 'n':
     print(f"OK {fname} Let's move on...\n")
 elif weekly_target == "y":
     last_target = SHEET.worksheet(fname).acell("H2").value
-    print("Your last Target was: \n")
-    print(f"{last_target} km")
+    print(f"Your last Target was: {last_target} km \n")
     weekly_target = input("How many KMs do you plan to run per week?\n")
 
 
