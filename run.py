@@ -195,8 +195,9 @@ def update_other_data(weekly_target_data):
     members_log_worksheet = SHEET.worksheet(fname)
     members_log_worksheet.update_acell("H2", weekly_target_data)
     members_log_worksheet.update_acell("I2", bmi_data)
-    print(
-        "Members log updated. Come back next week and log those runs again.\n")
+    print("Members log updated.\n")
+    print("Thank you for using Members Log.\n")
+    print("Come back next week and log those runs again.")
 
 
 update_other_data(weekly_target)
