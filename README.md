@@ -62,10 +62,32 @@ The program will then provide the User with a summary of the input data provided
 
 ### _**The Users' Weekly Targets**_
 
-The program allows the User to monitor their weekly runs. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead.
+The program allows the User to monitor their weekly runs. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead. Upon the Users return the following week, the program will remind and display the Users' target provided the previous week. 
 
 ![User Weekly Target Option Yes](views/docs/images/weeklytargetyes.jpg)
 
 Should the User select "n" for "No", the program will display a message stating moving on....
 
-![User Weekly Target Options](views/docs/images/weeklytargetno.jpg)
+![User Weekly Target Option No](views/docs/images/weeklytargetno.jpg)
+
+### _**The Users' BMI Tracker**_
+
+The BMI feature allows the User to monitor their Body Mass Index. The program will give the User the option to monitor their BMI.
+
+Shold the User decide to monitor their BMI, the program will ask the User to input their height and current weight. The Program will then calculate the Users' BMI and display the result to the User.
+
+![User BMI Tracker](views/docs/images/bmirating.jpg)
+
+As an added feature, the program will then ask the user if they'd like to know more about BMI, how its calculated and what the result of their rating means. If the User selects "no", the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
+
+![User BMI Tracker no](views/docs/images/bmino.jpg)
+
+If the User selects "y" the program will open a new tab which is directed to a National Health website with all the details about BMI. Once again the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
+
+![User BMI Tracker yes](views/docs/images/bmiyes.jpg)
+
+#### _**New Tab Opens**_
+
+![Opens New Tab on BMI Info](views/docs/images/newtabopen.jpg)
+
+The process terminates.
