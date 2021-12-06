@@ -10,7 +10,7 @@ This project is an application that allows Users of the Love Running Website to 
 
 Users will also have the choice of being able to track and monitor their progress on a weekly basis by choosing to provide total weekly targets to run.
 
-The aplication will also include a feature which calculates Users' Body Mass Index (BMI) together with a link to a National Health Site where they will be able to find out more about BMI in more detail.
+The aplication will also include a feature which calculates Users' Body Mass Index (BMI) together with a link to a National Health Site where they will be able to find information about BMI in more detail.
 
 ![Am I Responsive Design](views/docs/images/amiresponsive.jpg)
 
@@ -40,9 +40,9 @@ There is a validation at this stage to ensure that the User can only provide an 
 
 ![First Name Validation](views/docs/images/fnamevalidation.jpg)
 
-The application will also ask the User for a last name. This step will also have the same validation check as the request for the first name. It is important to stress that a last name is required also in order to avoid other Users from logging their runs on other Users logs with the same name.
+The application will also ask the User for a last name. This step will also have the same validation check as the request for the first name. It is important to stress that a last name is also required in order to avoid Users with the same first name from logging their runs on other Users logs with the same first name. The application will search through the gspreadsheet to ensure that the first name AND last name are unique.
 
-Once the last name is provided, the application triggers another welcom message but with the name of the User included to make it more personalised.
+Once the last name is provided, the application triggers another welcome message but with the name of the User included to make it more personalised.
 
 ![Personalised Welcome Message](views/docs/images/personalisedwelcomemessage.jpg)
 
@@ -51,3 +51,13 @@ Once the last name is provided, the application triggers another welcom message 
 The next steps are messages from the application that ask the user to provide their daily runs. These messages also inform the User on the format required to input the data.
 
 ![Personalised Welcome Message](views/docs/images/userinstructions.jpg)
+
+The User will log their daily runs in the format requested:
+
+![User Daily Logs](views/docs/images/userdailyruns.jpg)
+
+The application will then provide the User with a summary of the input data provided. The application will add the total distance and display the total distance to the User. Another message will appear informing the User that the distances will be logged to the database.
+
+![User Summary Logs](views/docs/images/summarylogs.jpg)
+
+### _**The Users' Weekly Targets**_
