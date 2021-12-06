@@ -91,3 +91,37 @@ If the User selects "y" the program will open a new tab which is directed to a N
 ![Opens New Tab on BMI Info](views/docs/images/newtabopen.jpg)
 
 The process terminates.
+
+
+# Future Features
+
+* Add validation to ensure User only provides float or integer responses to their daily runs.
+* Add a new feature that will display previous weeks runs and total distance to returning users.
+* Add feature to display previous weeks BMI rating to returning users.
+* Add round up of User BMI rating to 2 decimal points.
+
+
+# Data-Model
+
+
+
+
+# Flow-Charts
+
+
+
+# Testing
+
+
+
+# Bugs
+
+
+
+
+# Deployment
+
+
+
+
+# Credits
