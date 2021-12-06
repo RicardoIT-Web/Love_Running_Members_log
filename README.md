@@ -103,12 +103,16 @@ The process terminates.
 
 # Data-Model
 
+The program is based on messages and questions displayed by the program to the User for information and request of User input.
 
+The program with flow via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return to log further runs.
 
 
 # Flow-Charts
 
+The project was initiated with an idea in mind and a Lucid Chart was used to provide some clarity of the programs features before writing any code.
 
+![Lucid Chart](views/docs/images/flowchart.jpg)
 
 # Testing
 
