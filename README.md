@@ -130,7 +130,9 @@ The following tests were undertaken to test this program:
 
 # Bugs
 
+#### _**Remaining Bugs**_
 
+* At this point the program will only accept integer or float responses from the user when prompted to provide daily runs. If the user types a sting or simply press enter before providing an input, the program will stop and the user will have restart program from scratch.
 
 
 # Deployment
@@ -146,3 +148,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 
 # Credits
+
+* Code Institute for the deployment terminal
+* NHS Website for further information on Body Mass Index and Calculator
+* www.Lucidchart.com for the luchid chart
