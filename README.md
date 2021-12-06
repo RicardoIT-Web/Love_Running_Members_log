@@ -103,7 +103,7 @@ The process terminates.
 
 # Data-Model
 
-The program is based on messages and questions displayed by the program to the User for information and request of User input.
+The program is based on messages and questions displayed by the program to the User for information and for the request of User input.
 
 The program with flow via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return to log further runs.
 
@@ -116,7 +116,17 @@ The project was initiated with an idea in mind and a Lucid Chart was used to pro
 
 # Testing
 
+The following tests were undertaken to test this program:
 
+* I have simulated invalid entry of data where strings are required to test if errors are working.
+* I have simulated invalid entry of data where floats are required with integers to confirm the program accepts this numerical form and progresses.
+
+
+#### _**PEP8 Validator Testing**_
+
+* I have passed the code through a PEP8 validation and confirmed there are no issues.
+
+![PEP8](views/docs/images/pep8pythonvalidator.jpg)
 
 # Bugs
 
@@ -125,7 +135,14 @@ The project was initiated with an idea in mind and a Lucid Chart was used to pro
 
 # Deployment
 
+This project was deployed using Code Institute's mock terminal for Heroku.
 
+* Steps for deployment:
+
+    * Create new Heroku app
+    * Set the buildbacks to Python and NodeJS in this order
+    * Link the Heroku app to the GitHub repository
+    * Click on Deploy
 
 
 # Credits
