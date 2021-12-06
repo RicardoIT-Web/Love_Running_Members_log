@@ -192,8 +192,7 @@ def main():
             print(f"OK {fname} Let's move on...\n")
 
         elif bmi_info == "y":
-            print(
-                "https://www.nhs.uk/live-well/healthy-weight/bmi-calculator/")
+            print("https://www.truthaboutweight.global/\n")
 
     update_other_data(weekly_target, fname, bmi_data)
 
