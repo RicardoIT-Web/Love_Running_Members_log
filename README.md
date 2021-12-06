@@ -1,6 +1,6 @@
 # Welcome to the Love Running Members Log
 
-This project was developed to satisfy the third milestone project requirements of the Full Stack Web Development Program at the Code Institute. As a third project, this program is created using Python3 language.
+This project was developed to satisfy the third milestone project requirements of the Full Stack Web Development Program at the Code Institute. As a third project, this program is created using Python language.
 
 The objective of this project is to build a command-line program that allows users to manage a common dataset about a particular domain.
 
@@ -10,7 +10,7 @@ This project is an program that allows Users of the Love Running Website to log 
 
 Users will also have the choice of being able to track and monitor their progress on a weekly basis by choosing to provide total weekly targets to run.
 
-The aplication will also include a feature which calculates Users' Body Mass Index (BMI) together with a link to a National Health Site where they will be able to find information about BMI in more detail.
+The aplication will also include a feature which calculates Users' Body Mass Index (BMI) together with a link to a website where Users will be able to find information about BMI in more detail.
 
 ![Am I Responsive Design](views/docs/images/amiresponsive.jpg)
 
@@ -95,9 +95,8 @@ The process terminates.
 
 # Future Features
 
-* Add validation to ensure User only provides float or integer responses to their daily runs.
-* Add a new feature that will display previous weeks runs and total distance to returning users.
-* Add feature to display previous weeks BMI rating to returning users.
+* Add a new feature that will display previous weeks' runs and total distances to returning users.
+* Add feature to display previous weeks' BMI rating to returning users.
 * Add round up of User BMI rating to 2 decimal points.
 
 
@@ -105,7 +104,7 @@ The process terminates.
 
 The program is based on messages and questions displayed by the program to the User for information and for the request of User input.
 
-The program with flow via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return to log further runs.
+The program flows via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return to log further runs.
 
 
 # Flow-Charts
