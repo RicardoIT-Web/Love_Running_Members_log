@@ -132,7 +132,9 @@ The following tests were undertaken to test this program:
 
 #### _**Remaining Bugs**_
 
-* At this point the program will only accept integer or float responses from the user when prompted to provide daily runs. If the user types a sting or simply press enter before providing an input, the program will stop and the user will have restart program from scratch.
+* This version of the program will only accept integer or float responses from the user when prompted to provide daily runs. If the user types a sting or simply press enter before providing an input, the program will stop and the user will have restart program from scratch.
+
+The fix for this has been added to the Future Features section above.
 
 
 # Deployment
