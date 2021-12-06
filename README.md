@@ -62,7 +62,7 @@ The program will then provide the User with a summary of the input data provided
 
 ### _**The Users' Weekly Targets**_
 
-The program allows the User to monitor their weekly runs. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead. Upon the Users return the following week, the program will remind and display the Users' target provided the previous week. 
+The program allows the User to monitor their weekly runs. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead. Upon the Users return the following week, the program will remind and display the Users' target provided the previous week. If the User decides not to introduce a new target, the last target provided will remain in place.
 
 ![User Weekly Target Option Yes](views/docs/images/weeklytargetyes.jpg)
 
@@ -82,13 +82,13 @@ As an added feature, the program will then ask the user if they'd like to know m
 
 ![User BMI Tracker no](views/docs/images/bmino.jpg)
 
-If the User selects "y" the program will open a new tab which is directed to a National Health website with all the details about BMI. Once again the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
+If the User selects "y" the program will display a link that the User can copy and paste which will direct the User to a website with all the details about BMI. Once again the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
 
 ![User BMI Tracker yes](views/docs/images/bmiyes.jpg)
 
-#### _**New Tab Opens**_
+#### _**Link to Site about BMI**_
 
-![Opens New Tab on BMI Info](views/docs/images/newtabopen.jpg)
+![Opens New Tab on BMI Info](views/docs/images/linktosite.jpg)
 
 The process terminates.
 
@@ -130,11 +130,13 @@ The following tests were undertaken to test this program:
 
 # Bugs
 
+#### _**Solved Bugs**_
+
+* When I wrote this code, the program was only accepting interger and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user has to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user. 
+
 #### _**Remaining Bugs**_
 
-* This version of the program will only accept integer or float responses from the user when prompted to provide daily runs. If the user types a sting or simply press enter before providing an input, the program will stop and the user will have restart program from scratch.
-
-The fix for this has been added to the Future Features section above.
+* No bugs remaining.
 
 
 # Deployment
