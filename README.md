@@ -52,33 +52,33 @@ The next steps are messages from the program that ask the user to provide their 
 
 ![Personalised Welcome Message](views/docs/images/userinstructions.jpg)
 
-The User will log their daily runs in the format requested:
+The User will log their daily runs in the format requested. Any deviation from the format will also be picked by a ValueError and the user will be asked to try again.
 
 ![User Daily Logs](views/docs/images/userdailyruns.jpg)
 
-The program will then provide the User with a summary of the input data provided. The program will add the total distance and display the total distance to the User. Another message will appear informing the User that the distances will be logged to the database.
+The program will then provide the User with a summary of the input data received. The program will then add the total distance and display the total distance to the User. Another message will appear informing the User that the distances will be logged to the database.
 
 ![User Summary Logs](views/docs/images/summarylogs.jpg)
 
 ### _**The Users' Weekly Targets**_
 
-The program allows the User to monitor their weekly runs. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead. Upon the Users return the following week, the program will remind and display the Users' target provided the previous week. If the User decides not to introduce a new target, the last target provided will remain in place.
+The program allows the User to monitor their weekly runs against their weekly targets. For first time users, should the Users' selection be "y", the program will display a weekly target provided of "none" km as this is the default setting when a new sheet is created. The User will then have the option of typing a weekly target for the week ahead. Upon the Users return the following week, the program will remind and display the Users' target provided the previous week. If the User decides not to introduce a new target, the last target provided will remain in place.
 
 ![User Weekly Target Option Yes](views/docs/images/weeklytargetyes.jpg)
 
-Should the User select "n" for "No", the program will display a message stating moving on....
+Should the User select "n", the program will display a message stating moving on....
 
 ![User Weekly Target Option No](views/docs/images/weeklytargetno.jpg)
 
 ### _**The Users' BMI Tracker**_
 
-The BMI feature allows the User to monitor their Body Mass Index. The program will give the User the option to monitor their BMI.
+The BMI feature allows the User to monitor their Body Mass Index. The program will give the User the option of monitoring their BMI.
 
 Shold the User decide to monitor their BMI, the program will ask the User to input their height and current weight. The Program will then calculate the Users' BMI and display the result to the User.
 
 ![User BMI Tracker](views/docs/images/bmirating.jpg)
 
-As an added feature, the program will then ask the user if they'd like to know more about BMI, how its calculated and what the result of their rating means. If the User selects "no", the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
+As an added feature, the program will then ask the user if they'd like to know more about BMI, how its calculated and what the result of their rating means. If the User selects "n", the program will update the database and move on, ending with a message thanking the user and asking them to come back the following week to log their runs again.
 
 ![User BMI Tracker no](views/docs/images/bmino.jpg)
 
@@ -104,7 +104,7 @@ The process terminates.
 
 The program is based on messages and questions displayed by the program to the User for information and for the request of User input.
 
-The program flows via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return to log further runs.
+The program flows via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return the following week to log further runs.
 
 
 # Flow-Charts
@@ -119,19 +119,27 @@ The following tests were undertaken to test this program:
 
 * I have simulated invalid entry of data where strings are required to test if errors are working.
 * I have simulated invalid entry of data where floats are required with integers to confirm the program accepts this numerical form and progresses.
+* I have tested the program numerous times to ensure that Users with same fnames but different lnames have both their names added to the members details list and new sheets with headers created. I have also tested for the same but with users with the same lnames.
+* I have also tested the "n" responses to ensure thet the program moves on smoothly.
 
 
 #### _**PEP8 Validator Testing**_
 
-* I have passed the code through a PEP8 validation and confirmed there are no issues.
+* I have passed the code through PEP8 online and although it is showing three errors, these errors considered by Python.Org and PEP Style Guide to be acceptable and best practice as it is more reader friendly.
 
 ![PEP8](views/docs/images/pep8pythonvalidator.jpg)
+
+#### _**PEP8 Error is ignored**_
+
+![Python.org](views/docs/images/explanation_of_error_pep8.jpg)
 
 # Bugs
 
 #### _**Solved Bugs**_
 
-* When I wrote this code, the program was only accepting interger and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user has to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user. 
+* When I wrote this code, the program was only accepting interger and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user had to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user.
+
+* I was also having issues with User fnames and lnames as my original code was only focussed on the fnames to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both fnames and lnames was a factor in triggering these features. Now the program will not mix existing members with new members of equal fnames or lnames.
 
 #### _**Remaining Bugs**_
 
