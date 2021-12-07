@@ -117,22 +117,25 @@ def main():
         WORKSHEET.append_row([fname] + [lname])
         SHEET.add_worksheet(f"{fname}{lname}", 53, 20)
 
-    if (lname) not in existing_user_lnames:
-        user_worksheet = SHEET.worksheet(f"{fname}{lname}")
-        user_worksheet.update(
-            "A1:I1",
-            [
-                ["Monday"],
-                ["Tuesday"],
-                ["Wednesday"],
-                ["Thursday"],
-                ["Friday"],
-                ["Saturday"],
-                ["Sunday"],
-                ["Weekly Target"],
-                ["BMI"]
-            ],
-            major_dimension="COLUMNS")
+        if (
+            fname not in existing_user_fnames
+            or lname not in existing_user_lnames
+        ):
+            user_worksheet = SHEET.worksheet(f"{fname}{lname}")
+            user_worksheet.update(
+                "A1:I1",
+                [
+                    ["Monday"],
+                    ["Tuesday"],
+                    ["Wednesday"],
+                    ["Thursday"],
+                    ["Friday"],
+                    ["Saturday"],
+                    ["Sunday"],
+                    ["Weekly Target"],
+                    ["BMI"]
+                ],
+                major_dimension="COLUMNS")
 
     welcome_message(fname)
 
