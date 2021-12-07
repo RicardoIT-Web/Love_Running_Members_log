@@ -54,24 +54,24 @@ def user_instructions():
     print("If you did not run on a particular day, please type 0.\n ")
 
 
-def update_distance_log(weekday_answers, fname):
+def update_distance_log(weekday_answers, fname, lname):
     """
     Updating members log to the worksheet.
     Adding a new row with the list data provided
     """
     print("Let's get these runs logged...\n")
-    members_log_worksheet = SHEET.worksheet(fname)
+    members_log_worksheet = SHEET.worksheet(f"{fname}{lname}")
     members_log_worksheet.append_row(weekday_answers)
     print("Members log updated.\n")
 
 
-def update_other_data(weekly_target_data, fname, bmi_data):
+def update_other_data(weekly_target_data, fname, lname, bmi_data):
     """
     Updating members log to the worksheet.
     Adding a new row with the list data provided
     """
     print("updating members log...\n")
-    members_log_worksheet = SHEET.worksheet(fname)
+    members_log_worksheet = SHEET.worksheet(f"{fname}{lname}")
     if weekly_target_data != 'n':
         members_log_worksheet.update_acell("H2", weekly_target_data)
     if bmi_data != 'n':
@@ -83,34 +83,42 @@ def update_other_data(weekly_target_data, fname, bmi_data):
 
 def main():
     """
-    Main function calling all functions of the program
+    Main function
     """
 
     welcome_members_message()
-    # Message to user prompting input of fname and validate an alpha response
-    fname = input("Hello Member!\nPlease type your first name: \n")
-    fname = fname.upper()
+
+
+# Message to user prompting input of fname and validate an alpha response
+    fname = input("Hello Member!\nPlease type your first name: \n").upper()
+    # fname = fname.upper()
     while not fname.isalpha():
         fname = input("Error: please enter a First Name: ")
 
-    # Message to user prompting input of lname and validate an alpha response
-    lname = input("Please type your last name: \n")
-    lname = lname.upper()
+# Message to user prompting input of lname and validate an alpha response
+    lname = input("Please type your last name: \n").upper()
+    # lname = lname.upper()
     while not lname.isalpha():
         lname = input("Error: please enter a last Name: ")
 
-    # If statement Identify members details tab - search if fname already exist
-    # If so, add data to existing members tab. if not, create new tab
+# If statement Identify members details tab - search if fname already exist
+# If so, add data to existing members tab. if not, create new tab
     WORKSHEET = SHEET.worksheet("members_details")
     existing_user_fnames = WORKSHEET.col_values(1)
+    existing_user_lnames = WORKSHEET.col_values(2)
+    existing_users = zip(existing_user_fnames, existing_user_lnames)
 
-    if (fname) not in existing_user_fnames:
+    if (
+        fname not in existing_user_fnames
+        or lname not in existing_user_lnames
+        or (fname, lname) not in existing_users
+    ):
         WORKSHEET = SHEET.worksheet("members_details")
         WORKSHEET.append_row([fname] + [lname])
+        SHEET.add_worksheet(f"{fname}{lname}", 53, 20)
 
-    if (fname) not in existing_user_fnames:
-        SHEET.add_worksheet(fname, 53, 20)
-        user_worksheet = SHEET.worksheet(fname)
+    if (lname) not in existing_user_lnames:
+        user_worksheet = SHEET.worksheet(f"{fname}{lname}")
         user_worksheet.update(
             "A1:I1",
             [
@@ -130,8 +138,8 @@ def main():
 
     user_instructions()
 
-    # Define user answers as empty array for user input to be appended
-    # in each iteration
+# Define user answers as empty array for user input to be appended
+# in each iteration
     user_answers = []
     weekdays = [
             "Monday",
@@ -157,23 +165,24 @@ def main():
 
     print(f"you have entered: {user_answers}\n")
 
-    # calculate total weekly distance run
+# calculate total weekly distance run
     sums = user_answers
     print(f"Your total distance this week is: {sum(sums)}kms \n")
 
-    update_distance_log(user_answers, fname)
+    update_distance_log(user_answers, fname, lname)
 
-    # prompt user is they'd like to provide a weekly distance target
 
+# prompt user is they'd like to provide a weekly distance target
     weekly_target = input("Would you like to provide a weekly target? y/n: \n")
     if weekly_target == 'n':
         print(f"OK {fname} Let's move on...\n")
     elif weekly_target == "y":
-        last_target = SHEET.worksheet(fname).acell("H2").value
+        last_target = SHEET.worksheet(f"{fname}{lname}").acell("H2").value
         print(f"Your last Target was: {last_target} km \n")
         weekly_target = input("How many KMs do you plan to run per week?\n")
 
-    # Prompt user if they'd like to calculate BMI and reveal calculated result
+
+# Prompt user if they'd like to calculate BMI and reveal calculated result
     bmi_data = input(f"{fname} Would you like to know your BMI? y/n: \n")
     if bmi_data == "n":
         print(f"OK {fname} Let's move on...\n")
@@ -183,8 +192,6 @@ def main():
         weight = float(input("Please enter your current weight in kg: \n"))
         bmi_data = weight/(height/100)**2
         print(f"Your BMI is currently {bmi_data} \n")
-        print("To find out more about BMI and how it is meassured; \n")
-        print("Please select option below: \n")
 
         bmi_info = input(
             "Want to know more about BMI & how it's calculated? y/n \n")
@@ -194,7 +201,7 @@ def main():
         elif bmi_info == "y":
             print("https://www.truthaboutweight.global/\n")
 
-    update_other_data(weekly_target, fname, bmi_data)
+    update_other_data(weekly_target, fname, lname, bmi_data)
 
 
 if __name__ == "__main__":
