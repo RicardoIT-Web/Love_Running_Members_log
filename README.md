@@ -141,6 +141,8 @@ The following tests were undertaken to test this program:
 
 * I was also having issues with User fnames and lnames as my original code was only focussed on the fnames to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both fnames and lnames was a factor in triggering these features. Now the program will not mix existing members with new members of equal fnames or lnames.
 
+* Upon on a Users "y" response, I had a feature to open a webbrowser to a site that would give them more information about BMI and how its calculated, however, this feature was only working in the development environment. Heroku deployed site does not support this feature and so it was decided that I would just display a link of a website to the user in the program terminal.
+
 #### _**Remaining Bugs**_
 
 * No bugs remaining.
@@ -161,5 +163,5 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 # Credits
 
 * Code Institute for the deployment terminal
-* NHS Website for further information on Body Mass Index and Calculator
 * www.Lucidchart.com for the luchid chart
+* https://www.truthaboutweight.global/
