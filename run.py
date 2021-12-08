@@ -23,14 +23,14 @@ def welcome_members_message():
 
 def fname_input(prompt):
     """
-    Function to promt user to input first name
+    Function to prompt user to input first name
     """
     return input(prompt)
 
 
 def lname_input(prompt):
     """
-    Function to promt user to input last name
+    Function to prompt user to input last name
     """
     return input(prompt)
 
@@ -90,16 +90,18 @@ def main():
 
 
 # Message to user prompting input of fname and validate an alpha response
-    fname = input("Hello Member!\nPlease type your first name: \n").upper()
-    # fname = fname.upper()
+    fname = input("Hello Member!\nPlease type your first name: \n")
+    fname = fname.upper()
     while not fname.isalpha():
-        fname = input("Error: please enter a First Name: ")
+        fname = input("Error: please enter a first name: ")
+        fname = fname.upper()
 
 # Message to user prompting input of lname and validate an alpha response
-    lname = input("Please type your last name: \n").upper()
-    # lname = lname.upper()
+    lname = input("Please type your last name: \n")
+    lname = lname.upper()
     while not lname.isalpha():
         lname = input("Error: please enter a last Name: ")
+        lname = lname.upper()
 
 # If statement Identify members details tab - search if fname already exist
 # If so, add data to existing members tab. if not, create new tab

@@ -1,6 +1,6 @@
 {
    "python.linting.pylintEnabled": true,
-   "python.linting.enabled": true,
+   "python.linting.enabled": false,
    "python.linting.pycodestyleEnabled": false,
    "python.linting.flake8Enabled": true,
    "python.terminal.activateEnvironment": false,
@@ -22,5 +22,32 @@
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "HookyQR.beautify",
+   "cSpell.words": [
+      "acell",
+      "amiresponsive",
+      "aplha",
+      "bmino",
+      "bmirating",
+      "bmiyes",
+      "buildbacks",
+      "creds",
+      "fnames",
+      "fnamevalidation",
+      "gspread",
+      "gspreadsheet",
+      "linktosite",
+      "lnames",
+      "loverunningsite",
+      "Lucidchart",
+      "Personalised",
+      "summarylogs",
+      "userdailyruns",
+      "userinstructions",
+      "webbrowser",
+      "weeklytargetno",
+      "weeklytargetyes",
+      "welcomemessage"
+   ],
+   "cSpell.enabled": true
 }
