@@ -41,6 +41,7 @@
       "loverunningsite",
       "Lucidchart",
       "Personalised",
+      "pythonvalidator",
       "summarylogs",
       "userdailyruns",
       "userinstructions",
@@ -49,5 +50,5 @@
       "weeklytargetyes",
       "welcomemessage"
    ],
-   "cSpell.enabled": true
+   "cSpell.enabled": false
 }

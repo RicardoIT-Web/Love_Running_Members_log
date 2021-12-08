@@ -6,7 +6,7 @@ The objective of this project is to build a command-line program that allows use
 
 ![Love Running Site](views/docs/images/loverunningsite.jpg)
 
-This project is an program that allows Users of the Love Running Website to log their runs clocked throughout the week.
+This project is a program that allows Users of the Love Running Website to log their runs clocked throughout the week.
 
 Users will also have the choice of being able to track and monitor their progress on a weekly basis by choosing to provide total weekly targets to run.
 
@@ -31,7 +31,7 @@ The application will also include a feature which calculates Users' Body Mass In
 
 #### _**The Introduction Section**_
 
-The User is welcomed with a welcome message and asked to provide a First Name:
+The User is welcomed with a welcome message and asked to provide a first name:
 
 ![Welcome Message](views/docs/images/welcomemessage.jpg)
 
@@ -43,7 +43,7 @@ There is a validation at this stage to ensure that the User can only provide an 
 
 The program will also ask the User for a last name. This step will also have the same validation check as the request for the first name. It is important to stress that a last name is also required in order to avoid Users with the same first name from logging their runs on other Users logs with the same first name. The program will search through the gspreadsheet to ensure that the first name AND last name are unique.
 
-Once the last name is provided, the program triggers another welcome message but with the name of the User included to make it more personalised.
+Once the last name is provided, the program triggers another welcome message but with the User first name included to make it more personalised.
 
 ![Personalised Welcome Message](views/docs/images/personalisedwelcomemessage.jpg)
 
@@ -54,6 +54,12 @@ The next steps are messages from the program that ask the user to provide their 
 ![Personalised Welcome Message](views/docs/images/userinstructions.jpg)
 
 The User will log their daily runs in the format requested. Any deviation from the format will also be picked by a ValueError and the user will be asked to try again.
+
+##### _**User Distance Validation**_
+
+![User Distance Validation](views/docs/images/user_distance_validation.jpg)
+
+##### _**The Users' Daily Logs**_
 
 ![User Daily Logs](views/docs/images/userdailyruns.jpg)
 
@@ -98,11 +104,11 @@ The process terminates.
 * Add a new feature that will display previous weeks' runs and total distances to returning users.
 * Add feature to display previous weeks' BMI rating to returning users.
 * Add round up of User BMI rating to 2 decimal points.
-* Add validation step to code on line 187 to ensure User only response with a numeric answer.
+* Add validation step to code on line 187 to ensure User only responds with a numeric answer.
 
 ## Data-Model
 
-The program is based on messages and questions displayed by the program to the User for information and for the request of User input.
+The program is based on messages and questions displayed by the program to the User for information and for the request of Users' input.
 
 The program flows via a series of functions and global variables and based on the User input data which is stored on an external database, in this case Google Spreadsheets is used, the program will provide the User with the relevant output for each feature and the stored information will be used again upon the Users' return the following week to log further runs.
 
@@ -116,9 +122,9 @@ The project was initiated with an idea in mind and a Lucid Chart was used to pro
 
 The following tests were undertaken to test this program:
 
-* I have simulated invalid entry of data where strings are required to test if errors are working.
+* I have simulated invalid entry of data where strings are required to test if error messages are working.
 * I have simulated invalid entry of data where floats are required with integers to confirm the program accepts this numerical form and progresses.
-* I have tested the program numerous times to ensure that Users with same fnames but different lnames have both their names added to the members details list and new sheets with headers created. I have also tested for the same but with users with the same lnames.
+* I have tested the program numerous times to ensure that Users with same first names but different last names have both their names added to the members details list and new sheets with headers created. I have also tested for the same but for users with the same last names.
 * I have also tested the "n" responses to ensure that the program moves on smoothly.
 
 ### _**PEP8 Validator Testing**_
@@ -137,13 +143,13 @@ The following tests were undertaken to test this program:
 
 * When I wrote this code, the program was only accepting integer and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user had to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user.
 
-* I was also having issues with User fnames and lnames as my original code was only focussed on the fnames to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both fnames and lnames was a factor in triggering these features. Now the program will not mix existing members with new members of equal fnames or lnames.
+* I was also having issues with User first names and last names as my original code was only focussed on the first names to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both first names and last names was a factor in triggering these features. Now the program will not mix existing members with new members of equal fist names or last names.
 
-* Upon on a Users "y" response, I had a feature to open a webbrowser to a site that would give them more information about BMI and how its calculated, however, this feature was only working in the development environment. Heroku deployed site does not support this feature and so it was decided that I would just display a link of a website to the user in the program terminal.
+* Upon on a Users "y" response, I had a feature to open a webbrowser to a site that would give them more information about BMI and how its calculated, however, this feature was only working in the development environment. Heroku application does not support this feature and so it was decided that I would just display a link of a website to the user in the program terminal.
 
 #### _**Remaining Bugs**_
 
-* There is a remaining bug which was detected very late on in the project. A validation step was missed from the code on line 187 asking the User if they'd like to monitor weekly targets. This validation is not in place and therefore allowing the user to submit any type of response.
+* There is a remaining bug which was detected very late on in the project. A validation step was missed from the code on line 187 asking the User if they'd like to monitor weekly targets. This validation is not in place and therefore allowing the user to submit any type of response. This step has also been included in the Future Features section.
 
 ## Deployment
 
@@ -151,13 +157,14 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 * Steps for deployment:
 
-* Create new Heroku app
-* Set the buildbacks to Python and NodeJS in this order
-* Link the Heroku app to the GitHub repository
-* Click on Deploy
+  * Create new Heroku app
+  * Set the buildbacks to Python and NodeJS in this order
+  * Link the Heroku app to the GitHub repository
+  * Click on Deploy
 
 ## Credits
 
 * Code Institute for the deployment terminal
 * www.Lucidchart.com for the lucid chart
-* https://www.truthaboutweight.global/
+* <https://www.truthaboutweight.global/>
+* <https://stackoverflow.com/>
