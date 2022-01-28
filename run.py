@@ -50,7 +50,7 @@ def user_instructions():
 
     print("Please provide the distance of your daily runs. ")
     print("You should provide this data in numerical form. ")
-    print("Example: 3.2 = 3.2km run, 5.0 = 5km run\n")
+    print("Example: 3.2 = 3.2km run, 5 = 5km run\n")
     print("If you did not run on a particular day, please type 0.\n ")
 
 
@@ -143,38 +143,38 @@ def main():
 
     user_instructions()
 
-# # Define user answers as empty array for user input to be appended
-# # in each iteration
-#     user_answers = []
-#     weekdays = [
-#             "Monday",
-#             "Tuesday",
-#             "Wednesday",
-#             "Thursday",
-#             "Friday",
-#             "Saturday",
-#             "Sunday"
-#         ]
-#     for weekday in weekdays:
-#         answer = input(f"How many kms did you run on {weekday}? \n")
-#         while True:
-#             try:
-#                 run_kms = float(answer)
-#                 if run_kms < 0:
-#                     answer = input("Please try again: \n")
-#                     continue
-#                 break
-#             except ValueError as e:
-#                 answer = input(f"{e}: {answer} is not a number! Try Again: \n")
-#         user_answers.append(float(answer))
+# Define user answers as empty array for user input to be appended
+# in each iteration
+    user_answers = []
+    weekdays = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+        ]
+    for weekday in weekdays:
+        answer = input(f"How many kms did you run on {weekday}? \n")
+        while True:
+            try:
+                run_kms = float(answer)
+                if run_kms < 0:
+                    answer = input("Please try again: \n")
+                    continue
+                break
+            except ValueError as e:
+                answer = input(f"{e}: {answer} is not a number! Try Again: \n")
+        user_answers.append(float(answer))
 
-#     print(f"you have entered: {user_answers}\n")
+    print(f"you have entered: {user_answers}\n")
 
-# # calculate total weekly distance run
-#     sums = user_answers
-#     print(f"Your total distance this week is: {sum(sums)}kms \n")
+# calculate total weekly distance run
+    sums = user_answers
+    print(f"Your total distance this week is: {sum(sums)}kms \n")
 
-#     update_distance_log(user_answers, fname, lname)
+    update_distance_log(user_answers, fname, lname)
 
 
 # prompt user if they'd like to provide a weekly distance target
@@ -183,12 +183,15 @@ def main():
         if weekly_target == "y":
             last_target = SHEET.worksheet(f"{fname}{lname}").acell("H2").value
             print(f"Your last Target was: {last_target} km \n")
-            weekly_target = input("How many KMs do you plan to run per week?\n")
+            weekly_target = input("How many KMs do you plan to run next week?\n")
+            while not weekly_target.isdigit():
+                weekly_target = input("Error: please provide a distance in numerical form. \n")
             break
         if weekly_target =="n":
+            print(f"OK {fname} Let's move on...\n")
             break        
-        if weekly_target != "y" or "n":
-            print("Invalid answer. Please type n or y: \n")
+        elif weekly_target != "y" or "n":
+            print("Invalid answer. Please type y or n: \n")
             continue
         
 
@@ -196,26 +199,34 @@ def main():
     while True:
         bmi_data = input(f"{fname} Would you like to know your BMI? y/n: \n")
         if bmi_data == "y":
-            height = float(input("Please enter your current height in cm: \n"))
-            weight = float(input("Please enter your current weight in kg: \n"))
-            bmi_data = weight/(height/100)**2
-            print(f"Your BMI is currently {bmi_data} \n")
-            break
+            height = input("Please enter your current height in cm: \n")
+            while not height.integer():
+                height = input("Invalid response. Please provide your answer in numerical form. \n")
+
+            weight = int(input("Please enter your current weight in kg: \n"))
+            # while not weight.isdigit():
+                # weight = input("Invalid response. Please provide your answer in numerical form. \n")
+            bmi = weight/height/height*10000   
+            print(f"Your BMI is: {bmi}")
+            break            
         elif bmi_data == "n":
             print(f"OK {fname} Let's move on...\n")
             break
-        bmi_info = input(
-            "Want to know more about BMI & how it's calculated? y/n \n")
-        if bmi_info == "n":
-                 print(f"OK {fname} Let's move on...\n")
-        elif bmi_info == "y":
-                print("https://www.truthaboutweight.global/\n")
-        if bmi_data != "n" or "y":
-            print("Invalid answer. Please type n or y: \n")
-            continue
-        
+        else:
+            bmi_data != "y" or "n"
+            print("Invalid answer. Please type y or n: \n")
 
-    update_other_data(weekly_target, fname, lname, bmi_data)
+    
+    bmi_info = input(
+        "Want to know more about BMI & how it's calculated? y/n \n")
+    if bmi_info == "n":
+            print(f"OK {fname} Let's move on...\n")
+    elif bmi_info == "y":
+        print("https://www.truthaboutweight.global/\n")
+    elif bmi_data != "y" or "n":
+        print("Invalid answer. Please type y or n: \n")
+            
+        update_other_data(weekly_target, fname, lname, bmi_data)
 
 
 if __name__ == "__main__":
