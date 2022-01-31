@@ -160,7 +160,7 @@ def main():
         while True:
             try:
                 run_kms = float(answer)
-                if run_kms < 0:
+                if run_kms < 0 or run_kms > 300:
                     answer = input("Please try again: \n")
                     continue
                 break
@@ -196,37 +196,51 @@ def main():
         
 
 # Prompt user if they'd like to calculate BMI and reveal calculated result
+    
     while True:
         bmi_data = input(f"{fname} Would you like to know your BMI? y/n: \n")
         if bmi_data == "y":
-            height = input("Please enter your current height in cm: \n")
-            while not height.integer():
-                height = input("Invalid response. Please provide your answer in numerical form. \n")
+            height = 0
+            while True:
+                height = input("Please enter your current height in cm: \n")
+                if not height.isdigit() or float(height) <= 200 or float(height) >= 300:
+                    print("Invalid response. Are you sure you have provided the correct highet? \n")
+                    continue
+                break
+           
+            while True: 
+                weight = input("Please enter your current weight in kg: \n")
+                if not weight.isdigit():
+                    weight = input("Invalid response. Please provide your answer in metric form. \n")
 
-            weight = int(input("Please enter your current weight in kg: \n"))
-            # while not weight.isdigit():
-                # weight = input("Invalid response. Please provide your answer in numerical form. \n")
-            bmi = weight/height/height*10000   
+            bmi = float(weight)/float(height)/float(height)*10000
             print(f"Your BMI is: {bmi}")
-            break            
-        elif bmi_data == "n":
+            break        
+        if bmi_data == "n":
             print(f"OK {fname} Let's move on...\n")
             break
-        else:
-            bmi_data != "y" or "n"
+        if bmi_data != "y" or "n":
             print("Invalid answer. Please type y or n: \n")
-
+            continue
     
-    bmi_info = input(
-        "Want to know more about BMI & how it's calculated? y/n \n")
-    if bmi_info == "n":
-            print(f"OK {fname} Let's move on...\n")
-    elif bmi_info == "y":
-        print("https://www.truthaboutweight.global/\n")
-    elif bmi_data != "y" or "n":
-        print("Invalid answer. Please type y or n: \n")
+
+# Prompt user if they'd like to know more about BMI and provide a link for more details
+    while True:
+        bmi_info = input(
+            "Want to know more about BMI & how it's calculated? y/n \n")
+        if  bmi_info == "n":
+            print(f"OK {fname} We'll keep your data logged until next week. \n")
+            break
+        elif  bmi_info == "y":
+            print("https://www.truthaboutweight.global/\n")
+            break
+        else:
+            print("Invalid answer. Please type y or n: \n")
+            continue
+
             
-        update_other_data(weekly_target, fname, lname, bmi_data)
+        
+    update_other_data(weekly_target, fname, lname, bmi_data)
 
 
 if __name__ == "__main__":
