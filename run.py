@@ -183,17 +183,26 @@ def main():
         if weekly_target == "y":
             last_target = SHEET.worksheet(f"{fname}{lname}").acell("H2").value
             print(f"Your last Target was: {last_target} km \n")
-            weekly_target = input("How many KMs do you plan to run next week?\n")
-            while not weekly_target.isdigit():
-                weekly_target = input("Error: please provide a distance in numerical form. \n")
+
+            weekly_target = 0
+            while True:
+                weekly_target = input("How many KMs do you plan to run next week?\n")
+                if not weekly_target.isdigit() or float(weekly_target) <= 0 or float(weekly_target) >= 1000:
+                    print("Error: Have you typed in the correct distance?")
+                    print("please provide a distance in numerical form. \n")
+                    continue
+                break
+
+            print(f"{fname} You have provided: {weekly_target} kms as a target for next week")
             break
+
         if weekly_target =="n":
             print(f"OK {fname} Let's move on...\n")
-            break        
-        elif weekly_target != "y" or "n":
+            break
+        if not weekly_target == "y" or "n":
             print("Invalid answer. Please type y or n: \n")
             continue
-        
+       
 
 # Prompt user if they'd like to calculate BMI and reveal calculated result
     
@@ -203,15 +212,19 @@ def main():
             height = 0
             while True:
                 height = input("Please enter your current height in cm: \n")
-                if not height.isdigit() or float(height) <= 200 or float(height) >= 300:
-                    print("Invalid response. Are you sure you have provided the correct highet? \n")
+                if not height.isdigit() or float(height) <= 50 or float(height) >= 300:
+                    print("Invalid response. Are you sure you have provided the correct highet?")
+                    print("Please enter your current height in CM: \n")
                     continue
                 break
-           
+            weight = 0
             while True: 
                 weight = input("Please enter your current weight in kg: \n")
-                if not weight.isdigit():
-                    weight = input("Invalid response. Please provide your answer in metric form. \n")
+                if not weight.isdigit() or float(weight) <= 2 or float(weight) >= 700:
+                    print("Invalid response. Are you sure you have provided the correct highet?")
+                    print("Please enter your current weight in KG:\n")
+                    continue
+                break
 
             bmi = float(weight)/float(height)/float(height)*10000
             print(f"Your BMI is: {bmi}")
