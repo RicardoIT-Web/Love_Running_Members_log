@@ -93,14 +93,14 @@ def main():
     fname = input("Hello Member!\nPlease type your first name: \n")
     fname = fname.upper()
     while not fname.isalpha():
-        fname = input("Error: please enter a first name: ")
+        fname = input("Error: please enter a first name: \n")
         fname = fname.upper()
 
 # Message to user prompting input of lname and validate an alpha response
     lname = input("Please type your last name: \n")
     lname = lname.upper()
     while not lname.isalpha():
-        lname = input("Error: please enter a last Name: ")
+        lname = input("Error: please enter a last Name: \n")
         lname = lname.upper()
 
 # If statement Identify members details tab - search if fname already exist
@@ -179,7 +179,7 @@ def main():
 
 # prompt user if they'd like to provide a weekly distance target
     while True:
-        weekly_target = input("Would you like to provide a weekly target? y/n: \n")
+        weekly_target = input("Would you like to provide a weekly target? y/n \n")
         if weekly_target == "y":
             last_target = SHEET.worksheet(f"{fname}{lname}").acell("H2").value
             print(f"Your last Target was: {last_target} km \n")
@@ -193,14 +193,14 @@ def main():
                     continue
                 break
 
-            print(f"{fname} You have provided: {weekly_target} kms as a target for next week")
+            print(f"{fname} You have provided: {weekly_target} kms as a target for next week \n")
             break
 
         if weekly_target =="n":
             print(f"OK {fname} Let's move on...\n")
             break
         if not weekly_target == "y" or "n":
-            print("Invalid answer. Please type y or n: \n")
+            print("Invalid answer. Please type y or n \n")
             continue
        
 
@@ -212,9 +212,8 @@ def main():
             height = 0
             while True:
                 height = input("Please enter your current height in cm: \n")
-                if not height.isdigit() or float(height) <= 50 or float(height) >= 300:
-                    print("Invalid response. Are you sure you have provided the correct highet?")
-                    print("Please enter your current height in CM: \n")
+                if not height.isdigit() or float(height) <= 50 or float(height) >= 3000:
+                    print("Invalid response. Are you sure you have provided the correct height?")
                     continue
                 break
             weight = 0
@@ -222,7 +221,6 @@ def main():
                 weight = input("Please enter your current weight in kg: \n")
                 if not weight.isdigit() or float(weight) <= 2 or float(weight) >= 700:
                     print("Invalid response. Are you sure you have provided the correct highet?")
-                    print("Please enter your current weight in KG:\n")
                     continue
                 break
 

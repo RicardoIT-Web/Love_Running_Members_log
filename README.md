@@ -122,10 +122,51 @@ The project was initiated with an idea in mind and a Lucid Chart was used to pro
 
 The following tests were undertaken to test this program:
 
-* I have simulated invalid entry of data where strings are required to test if error messages are working.
-* I have simulated invalid entry of data where floats are required with integers to confirm the program accepts this numerical form and progresses.
-* I have tested the program numerous times to ensure that Users with same first names but different last names have both their names added to the members details list and new sheets with headers created. I have also tested for the same but for users with the same last names.
-* I have also tested the "n" responses to ensure that the program moves on smoothly.
+* The program starts off with a greeting message and asks the User to provide their first name. Its is expected that the User only provides an alpha response before moving on. This part of the code has been written to only accept such response. Any other type of response will trigger an error message and will prompt the User to try again. The same method has been applied to the User last name prompt. Once the User has responded to both prompts correctly, the program will provide a more personalized greeting which will include the User's first name:
+
+![fname and lname test](views/docs/images/test-f-and-lname.jpg)
+
+* The program will then ask the User to provide their daily runs in numerical form reminding the User to type "0" if no runs on a particular day. Code has been written to accept only numerical responses but in this case, edge cases have been included so that the program will not accept negative values or excessive distances run on a daily basis. The lowest value accepted is "0" and the maximum daily run accepted is 300.
+
+![Daily Runs](views/docs/images/daily-runs.jpg)
+
+* Once the User has all of the daily distances run, the program will provide the user with a summary of the data entered and then will sum up all the values and provide the User with a total distance run for that week and proceed to logg the data to the gspreadsheet API and inform the User that the runs have been logged.
+
+![Daily Runs Logged](views/docs/images/daily-runs-logged.jpg)
+
+* At this point, the program will ask the User if they would like to provide a weekly distance target for the upcoming week. Code has been written to only accept a "y" or "n" response from the User. Once the User types "y", the program will find the specific User's gspreadsheet and if its the first time the User provides a response to this step, the program by default will respond with a previous target of "None". The code also incorporates an edge case here so as to only accept reasonable responses. The code will not accept negative responses or weekly distances greater than 1000kms per week.
+
+![Weekly Target Test](views/docs/images/weekly-target-test.jpg)
+
+![Weekly Target Test Yes with Edge Case](views/docs/images/weekly-target-test-yes-edge-case.jpg)
+
+* If its not the first time the User responds to this question, the program will retreive the distance provided by User on the previous week and remind the User of their previous weeks target and display it.
+
+![Weekly Target Test Previous Data](views/docs/images/weekly-target-test-previous-data.jpg)
+
+* If the User decides they do not want a weekly target and type "n", the program will move on and display a message statting just that.
+
+![Weekly Target Test No Response](views/docs/images/weekly-target-test-no.jpg)
+
+* The following part of the program is about Body Mass Index (BMI) and the program asks the User if they would like to know what their BMI is. Once again code is written to only accept "y" or "n" responses;
+
+![BMI Test](views/docs/images/bmi-test.jpg)
+
+* In order to calculate BMI, the program requires height and weight data from the User. Once again code is written to only accept numerical responses and edge cases have also been applied here with the minimum height being 50cm and maximum accepted is 2999cm.
+
+![BMI Height Test](views/docs/images/bmi-height-test.jpg)
+
+* The program then requires the Users weight and as per the height section, code is written to only accept numerical responses and edge cases have also been applied here with the minimum weight being 2kg and maximum accepted is 699kg.
+
+![BMI Weight Test](views/docs/images/bmi-weight-test.jpg)
+
+* Once the program has these two datas, it then proceeds to calculate the User's BMI. In the final step the program asks the User if they would like to know more about BMI and how its meassured. Once again code is written to only accept "y" and "n" responses. If the user selects "y" the program displays a link which the User can use to find out more details. Unfortunately Heroku does not support links to external sources so this is not a link that the User can clicked on and be taken to the source automatically.
+
+![More Info Test](views/docs/images/more-info-test.jpg)
+
+* If the User selects "n" for no, the program will move on and log the final data to the gspreadsheet API, and displays a message to the User to come back again next week and update their runs.
+
+![More Info Test No](views/docs/images/more-info-test-no.jpg)
 
 ### _**PEP8 Validator Testing**_
 
@@ -168,3 +209,4 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 * www.Lucidchart.com for the lucid chart
 * <https://www.truthaboutweight.global/>
 * <https://stackoverflow.com/>
+* https://www.guinnessworldrecords.com/ (Data for Shortest / Tallest / Heaviest and Lightest humans on record)
