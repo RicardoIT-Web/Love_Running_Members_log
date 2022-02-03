@@ -111,17 +111,17 @@ def main():
     existing_users = zip(existing_user_fnames, existing_user_lnames)
 
     if (
-        fname not in existing_user_fnames
-        or lname not in existing_user_lnames
-        or (fname, lname) not in existing_users
+        fname not in existing_user_fnames or
+        lname not in existing_user_lnames or
+        (fname, lname) not in existing_users
     ):
         WORKSHEET = SHEET.worksheet("members_details")
         WORKSHEET.append_row([fname] + [lname])
         SHEET.add_worksheet(f"{fname}{lname}", 53, 20)
 
         if (
-            fname not in existing_user_fnames
-            or lname not in existing_user_lnames
+            fname not in existing_user_fnames or
+            lname not in existing_user_lnames
         ):
             user_worksheet = SHEET.worksheet(f"{fname}{lname}")
             user_worksheet.update(
@@ -165,7 +165,7 @@ def main():
                     continue
                 break
             except ValueError as e:
-                answer = input(f"{e}: {answer} is not a number! Try Again: \n")
+                answer = input(f"{answer} is not a number! Try Again: \n")
         user_answers.append(float(answer))
 
     print(f"you have entered: {user_answers}\n")
@@ -179,78 +179,86 @@ def main():
 
 # prompt user if they'd like to provide a weekly distance target
     while True:
-        weekly_target = input("Would you like to provide a weekly target? y/n \n")
+        weekly_target = input(
+            "Would you like to provide a weekly target? y/n \n")
         if weekly_target == "y":
             last_target = SHEET.worksheet(f"{fname}{lname}").acell("H2").value
             print(f"Your last Target was: {last_target} km \n")
 
             weekly_target = 0
             while True:
-                weekly_target = input("How many KMs do you plan to run next week?\n")
-                if not weekly_target.isdigit() or float(weekly_target) <= 0 or float(weekly_target) >= 1000:
+                weekly_target = input(
+                    "How many KMs do you plan to run next week?\n")
+                if not weekly_target.isdigit() or float(
+                        weekly_target) <= 0 or float(weekly_target) >= 1000:
                     print("Error: Have you typed in the correct distance?")
                     print("please provide a distance in numerical form. \n")
                     continue
                 break
 
-            print(f"{fname} You have provided: {weekly_target} kms as a target for next week \n")
+            print(
+                f"You have provided: {weekly_target} kms as a target \n"
+                )
             break
 
-        if weekly_target =="n":
+        if weekly_target == "n":
             print(f"OK {fname} Let's move on...\n")
             break
         if not weekly_target == "y" or "n":
             print("Invalid answer. Please type y or n \n")
             continue
-       
+
 
 # Prompt user if they'd like to calculate BMI and reveal calculated result
-    
+
     while True:
         bmi_data = input(f"{fname} Would you like to know your BMI? y/n: \n")
         if bmi_data == "y":
             height = 0
             while True:
-                height = input("Please enter your current height in cm: \n")
-                if not height.isdigit() or float(height) <= 50 or float(height) >= 3000:
-                    print("Invalid response. Are you sure you have provided the correct height?")
+                height = input(
+                    "Please enter your height in cm in numerical form: \n")
+                if not height.isdigit() or float(
+                        height) <= 50 or float(height) >= 3000:
+                    print(
+                        "Error. Have you provided the correct height?")
                     continue
                 break
             weight = 0
-            while True: 
-                weight = input("Please enter your current weight in kg: \n")
-                if not weight.isdigit() or float(weight) <= 2 or float(weight) >= 700:
-                    print("Invalid response. Are you sure you have provided the correct highet?")
+            while True:
+                weight = input(
+                    "Please enter your weight in kg and numerical form: \n")
+                if not weight.isdigit() or float(weight) <= 2 or float(
+                        weight) >= 700:
+                    print("Error. Have you provided the correct weight?")
                     continue
                 break
 
             bmi = float(weight)/float(height)/float(height)*10000
             print(f"Your BMI is: {bmi}")
-            break        
+            break
         if bmi_data == "n":
             print(f"OK {fname} Let's move on...\n")
             break
         if bmi_data != "y" or "n":
             print("Invalid answer. Please type y or n: \n")
             continue
-    
 
-# Prompt user if they'd like to know more about BMI and provide a link for more details
+
+# Prompt user if they want to know more about BMI
     while True:
         bmi_info = input(
             "Want to know more about BMI & how it's calculated? y/n \n")
-        if  bmi_info == "n":
-            print(f"OK {fname} We'll keep your data logged until next week. \n")
+        if bmi_info == "n":
+            print(f"OK {fname} Let's move on....\n")
             break
-        elif  bmi_info == "y":
+        elif bmi_info == "y":
             print("https://www.truthaboutweight.global/\n")
             break
         else:
             print("Invalid answer. Please type y or n: \n")
             continue
 
-            
-        
     update_other_data(weekly_target, fname, lname, bmi_data)
 
 

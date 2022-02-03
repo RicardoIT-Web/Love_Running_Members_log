@@ -31,7 +31,7 @@ The application will also include a feature which calculates Users' Body Mass In
 
 #### _**The Introduction Section**_
 
-The User is welcomed with a welcome message and asked to provide a first name:
+The User is greeted with a welcome message and asked to provide a first name:
 
 ![Welcome Message](views/docs/images/welcomemessage.jpg)
 
@@ -41,7 +41,7 @@ There is a validation at this stage to ensure that the User can only provide an 
 
 ![First Name Validation](views/docs/images/fnamevalidation.jpg)
 
-The program will also ask the User for a last name. This step will also have the same validation check as the request for the first name. It is important to stress that a last name is also required in order to avoid Users with the same first name from logging their runs on other Users logs with the same first name. The program will search through the gspreadsheet to ensure that the first name AND last name are unique.
+The program will also ask the User for a last name. This step will also have the same validation check as the request for the first name. It is important to highlight that a last name is also required in order to avoid Users with the same first name from logging their runs on other Users logs with the same first name. The program will search through the gspreadsheet to ensure that the first name together with the last name are unique.
 
 Once the last name is provided, the program triggers another welcome message but with the User first name included to make it more personalised.
 
@@ -170,27 +170,23 @@ The following tests were undertaken to test this program:
 
 ### _**PEP8 Validator Testing**_
 
-* I have passed the code through PEP8 online and although it is showing three errors, these errors considered by Python.Org and PEP Style Guide to be acceptable and best practice as it is more reader friendly.
+* I have passed the code through PEP8 online which demonstrates that the code error free.
 
-![PEP8](views/docs/images/pep8pythonvalidator.jpg)
-
-### _**PEP8 Error is ignored**_
-
-![Python.org](views/docs/images/explanation_of_error_pep8.jpg)
+![PEP8](views/docs/images/pep8pythonvalidcheck.jpg)
 
 ## Bugs
 
 ### _**Solved Bugs**_
 
-* When I wrote this code, the program was only accepting integer and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user had to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user.
+* When I wrote this code, I was having issues with User first names and last names as my original code was only focussed on the first names to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both first names and last names was a factor in triggering these features. Now the program will not mix existing members with new members of equal fist names or last names.
 
-* I was also having issues with User first names and last names as my original code was only focussed on the first names to trigger both names to be added to the members details list and a new tab with headers to be created. The code was adjusted so that both first names and last names was a factor in triggering these features. Now the program will not mix existing members with new members of equal fist names or last names.
+* Also, the program was only accepting integer and float responses from the User when inputting their daily distances. Empty and string responses were breaking the program and the user had to start from scratch. This was fixed by amending the exception error type from typeError to ValueError. An if statement was also introduced to avoid negative value inputs by the user.
 
-* Upon on a Users "y" response, I had a feature to open a webbrowser to a site that would give them more information about BMI and how its calculated, however, this feature was only working in the development environment. Heroku application does not support this feature and so it was decided that I would just display a link of a website to the user in the program terminal.
+* Upon a Users "y" response, I had a feature to open a webbrowser to a site that would give them more information about BMI and how its calculated, however, this feature was only working in the development environment. Heroku application does not support this feature and so it was decided that the application would simply display a link of a website to the user in the program terminal.
 
 #### _**Remaining Bugs**_
 
-* There is a remaining bug which was detected very late on in the project. A validation step was missed from the code on line 187 asking the User if they'd like to monitor weekly targets. This validation is not in place and therefore allowing the user to submit any type of response. This step has also been included in the Future Features section.
+* There are no remaining bugs identified.
 
 ## Deployment
 
