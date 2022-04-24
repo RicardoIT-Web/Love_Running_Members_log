@@ -2,6 +2,8 @@
 
 This project was developed to satisfy the third milestone project requirements of the Full Stack Web Development Program at the Code Institute. As a third project, this program is created using Python language.
 
+Click [here](https://love-running-members-log.herokuapp.com/) to view deployed application.
+
 The objective of this project is to build a command-line program that allows users to manage a common dataset about a particular domain.
 
 ![Love Running Site](views/docs/images/loverunningsite.jpg)
